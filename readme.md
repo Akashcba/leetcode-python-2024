@@ -41,6 +41,30 @@ class Solution:
         return candidate
 ```
 
+## [26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/)
+```python
+# Noob solution Use set and [:] for inplace operaion in python
+class Solution:
+    def removeDuplicates(self, nums:List[int])->int:
+        nums[:] = sorted(set(nums))
+        return len(nums)
+```
+### Best Solution O(N)time and O(1) space
+```python
+# Two Pointer solution
+class Solution:
+    def removeDuplicates(self, nums:List[int])->int:
+        # Check for empty lists
+        if len(nums)==0:
+            return 0
+        unique = i= 1
+        for i in range(1,len(nums)):
+            if nums[i] != nums[i-1]:
+                # Use unique as key for unique index
+                nums[unique] = nums[i]
+                unique+=1
+        return unique
+```
 
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
