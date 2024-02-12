@@ -21,7 +21,25 @@ class Solution:
                 counter_arr[element]=1
         return max(counter_arr, key=counter_arr.get)
 ```
-
+#### Best Solution using O(n) time and O(1) space
+```python
+# Boyer-Moore Majority Vote Algorithm
+# This algorithm works on the fact that if an element occurs more than N/2 times, it means that
+# the remaining elements other than this would definitely be less than N/2
+class Solution:
+    def majorityElement(self, nums:List[int])->int:
+        candidate=None
+        count=0
+        for element in nums:
+            if candidate is None or count==0:
+                candidate=element
+                count+=1
+            elif element==candidate:
+                count+=1
+            else:
+                count-=1
+        return candidate
+```
 
 
 # Contributing
