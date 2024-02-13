@@ -233,7 +233,7 @@ class  Solution:
                 k-=1
                 j-=1
 ```
-## [118. Pascal's Triangle](https://leetcode.com/problems/pascals-triangle/description/)
+<!-- ## [118. Pascal's Triangle](https://leetcode.com/problems/pascals-triangle/description/)
 ```python
 """
 Return first num_rows of pascals triangle
@@ -248,7 +248,7 @@ class Solution:
                 ls = [0]*(i+1)
                 pascal_triangle
 """
-```
+``` -->
 ## [121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/)
 ```python
 # Time Complexity : O(n)
@@ -261,10 +261,27 @@ class Solution:
             # check for any lower value of min price
             if min_price > prices[i]:
                 min_price=prices[i]
-            # checck for maximum of max profit
+            # check for maximum of max profit
             if max_profit < prices[i]-min_price:
                 max_profit=prices[i]-min_price
         return max_profit
+```
+## [136. Single Number](https://leetcode.com/problems/single-number/description/)
+
+```python
+"""
+Return the single time appearing number in the array
+"""
+class Solution:
+    def singleNumber(self, nums:List[int])->int:
+        # The property of XOR bitwise is that it returns the number which does not
+        # appear even number of times
+        # Check this arrticle for more such tricks
+        # https://medium.com/@shashankmohabia/bitwise-operators-facts-and-hacks-903ca516f28c
+        result=nums[0]
+        for i in range(1,len(nums)):
+            result^=nums[i]
+        return result
 ```
 
 # Contributing
