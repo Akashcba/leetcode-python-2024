@@ -133,6 +133,32 @@ class Solution:
         return []
 ```
 
+## [35. Search Insert Position](https://leetcode.com/problems/search-insert-position/description/)
+```python
+"""
+Sorted array of integers
+Search for the target in the sorted array in O(log n)
+If not found retrun its possible index
+"""
+# Using Binary Search Logic
+class Solution:
+    def searchInsert(self, nums:List[int],target:int)->int:
+        low,high=0,len(nums)-1
+        while(low<=high):
+            mid = (low+high)//2
+            if nums[mid]==target:
+                return mid
+            elif nums[mid]>target:
+                high=mid-1
+            else:
+                low=mid+1
+        # Return nearest index for target if not in nums
+        if target<nums[mid]:
+            return mid
+        else:
+            return mid+1
+```
+
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
