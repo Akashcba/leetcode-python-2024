@@ -161,6 +161,54 @@ class Solution:
             return mid+1
 ```
 
+## [66. Plus One](https://leetcode.com/problems/plus-one/description/)
+```python
+"""
+large integer represented as array - left to right
+increment (add) the number by 1
+"""
+# O(n) solution
+class Solution:
+    def plusOne(self, nums:List[int])->List[int]:
+        carry,j=0,len(nums)-1
+        while(j>=0):
+            if j==len(nums)-1:
+                nums[j] = nums[j]+1
+            else:
+                nums[j]+=carry
+            if nums[j]>9:
+                carry=1
+            else:
+                carry=0
+            j-=1
+        if carry==1:
+            nums[:] = [1]+nums[:]
+        return nums
+```
+#### Solution using bt manipulation
+```python
+class Solution:
+    def plusOne(self, nums:List[int])->List[int]:
+        s = [str(i) for i in nums]
+        digit = int("".join(s))
+        print(digit)
+        ## Add 1 using bit manipulation
+        def addOne(x) :
+            m = 1
+            # Flip all the set bits
+            # until we find a 0 
+            while(x & m):
+                x = x ^ m
+                m <<= 1        
+            # flip the rightmost 
+            # 0 bit 
+            x = x ^ m
+            return str(x)
+        res =  addOne(digit)
+        # print(res)
+        return list(map(int, str(res)))
+```
+
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
