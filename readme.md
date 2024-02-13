@@ -65,6 +65,42 @@ class Solution:
                 unique+=1
         return unique
 ```
+## [2108. Find First Palindromic String in the Array](https://leetcode.com/problems/find-first-palindromic-string-in-the-array/description/?envType=daily-question&envId=2024-02-13)
+```python
+# Noob's Solution
+# Time Complexity = O(n.m); n is the no. of words and m is the length of words
+# Space complexity =
+class Solution:
+    def firstPalindrome(self, words:List[str])->str:
+        for word in words:
+            if word[:] == word[::-1]:
+                # Return First Palindrome
+                return word
+        ## Palindrome not found return empty string
+        return ""
+```
+### Optimal Solution Using Two Pointers
+```python
+# Two Pointer Solution
+# Time Complexity = O(n.m); n is the no. of words and m is the length of words
+# Space complexity = O(1)
+class Solution:
+    def check_palindrome(self,word:str)->bool:
+        i,j = 0,len(word)-1
+        while(i<=j):
+            if word[i] == word[j]:
+                i+=1
+                j-=1
+            else:
+                return False
+        return True
+    def firstPalindrome(self, words:List[str])->str:
+        for word in words:
+            if self.check_palindrome(word):
+                return word
+        ## Palindrome not found return empty string
+        return ""
+```
 
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
