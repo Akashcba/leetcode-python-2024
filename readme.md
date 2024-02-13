@@ -43,6 +43,9 @@ class Solution:
 
 ## [26. Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/)
 ```python
+"""
+Remove duplicates from a sorted array and return the number of unique elements.
+"""
 # Noob solution Use set and [:] for inplace operaion in python
 class Solution:
     def removeDuplicates(self, nums:List[int])->int:
@@ -67,6 +70,9 @@ class Solution:
 ```
 ## [2108. Find First Palindromic String in the Array](https://leetcode.com/problems/find-first-palindromic-string-in-the-array/description/?envType=daily-question&envId=2024-02-13)
 ```python
+"""
+Return the first palindrome in the list of strings.
+"""
 # Noob's Solution
 # Time Complexity = O(n.m); n is the no. of words and m is the length of words
 # Space complexity =
@@ -79,7 +85,7 @@ class Solution:
         ## Palindrome not found return empty string
         return ""
 ```
-### Optimal Solution Using Two Pointers
+### Solution Using Two Pointers
 ```python
 # Two Pointer Solution
 # Time Complexity = O(n.m); n is the no. of words and m is the length of words
@@ -100,6 +106,31 @@ class Solution:
                 return word
         ## Palindrome not found return empty string
         return ""
+```
+## [1. Two Sum](https://leetcode.com/problems/two-sum/description/)
+```python
+class Solution:
+    def twoSum(self,nums:List[int],target:int)->List[int]:
+        # Brute Force Slution O(n^2)
+        for i in range(0, len(nums)-1):
+            for j in range(i+1, len(nums)):
+                if nums[i]+nums[j]==target:
+                    return [i, j]
+        return ""
+```
+#### Optimal Solution using Dictionary/Hashmap. O(n) time complexity and O(n) space complexity
+```python
+# Using hashmap
+class Solution:
+    def twoSum(self, nums:List[int], target:int)->List[int]:
+        # Create empty hashmap
+        hash_map={}
+        for i in range(0,len(nums)):
+            if nums[i] in hash_map:
+                return [i, hash_map[nums[i]]]
+            else:
+                hash_map[target - nums[i]]=i
+        return []
 ```
 
 # Contributing
