@@ -141,6 +141,8 @@ Search for the target in the sorted array in O(log n)
 If not found retrun its possible index
 """
 # Using Binary Search Logic
+# Time Complexity : O(log n)
+# Space Compleity : O(1)
 class Solution:
     def searchInsert(self, nums:List[int],target:int)->int:
         low,high=0,len(nums)-1
