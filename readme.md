@@ -209,6 +209,31 @@ class Solution:
         return list(map(int, str(res)))
 ```
 
+## [88. Merge Sorted Array](https://leetcode.com/problems/merge-sorted-array/description/)
+```python
+"""
+Merge Two sorted arrays into a single sorted array
+"""
+# Operations need to be inplace
+class  Solution:
+    def merge(self, nums1:List[int],m:int,nums2:List[int],n:int)->None:
+        # Use two pointers
+        # Start additions from right to left
+        i,j=m-1,n-1
+        # k is pointer to end of nums1
+        k=m+n-1
+        while(j>=0):
+            # i>=0 handles cases when m=0
+            if i>=0 and nums1[i] > nums2[j]:
+                nums1[k] = nums1[i]
+                k-=1
+                i-=1
+            else:
+                nums1[k] = nums2[j]
+                k-=1
+                j-=1
+```
+
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
