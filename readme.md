@@ -233,7 +233,39 @@ class  Solution:
                 k-=1
                 j-=1
 ```
-## []()
+## [118. Pascal's Triangle](https://leetcode.com/problems/pascals-triangle/description/)
+```python
+"""
+Return first num_rows of pascals triangle
+class Solution:
+    def generate(self,numRows:int)->List[List[int]]:
+        for i in range(0,numRows):
+            if i==0:
+                pascal_tri.append([1])
+            elif i==1:
+                pascal_tri.append([1,1])
+            else:
+                ls = [0]*(i+1)
+                pascal_triangle
+"""
+```
+## [121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/)
+```python
+# Time Complexity : O(n)
+# Space Complexity : O(1)
+class Solution:
+    def maxProfit(self,prices:List[int])->int:
+        max_profit=0
+        min_price=prices[0]
+        for i in range(1,len(prices)):
+            # check for any lower value of min price
+            if min_price > prices[i]:
+                min_price=prices[i]
+            # checck for maximum of max profit
+            if max_profit < prices[i]-min_price:
+                max_profit=prices[i]-min_price
+        return max_profit
+```
 
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
