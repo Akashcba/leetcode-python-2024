@@ -283,6 +283,40 @@ class Solution:
             result^=nums[i]
         return result
 ```
+## [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/description/)
+```python
+"""
+Given an array of integers.
+Return True if array contains duplicates
+else retrun False
+"""
+# Brute Force
+# Time Complexity O(n^2)
+# Causes Time Limit Exceeded Error
+class Solution:
+    def containsDuplicate(self,nums:List[int])->bool:
+        for i in range(0,len(nums-1)):
+            for j in range(i+1, len(nums)):
+                if nums[i]==nums[j]:
+                    return True
+        return False
+```
+#### Optimal Solution using Hashmap or Set
+```python
+# Time Complexity : O(n)
+# Space Complexity : O(n)
+class Solution:
+    def containsDuplicate(self, nums:List[int])->bool:
+        # hashmap = {}
+        hashmap=set()
+        for i in nums:
+            if i in hashmap:
+                return True
+            else:
+                # hashmap[i]=1
+                hashmap.add(i)
+        return False
+```
 
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
