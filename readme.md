@@ -351,6 +351,41 @@ class Solution:
                 return True
         return False
 ```
+## [228. Summary Ranges](https://leetcode.com/problems/summary-ranges/description/)
+```python
+"""
+given a sorted unique integer array
+Return the smallest sorted list of ranges
+that cover all the numbers in the array exactly
+"""
+# Time Complexity : O(n)
+# Space Complexity : O(1)
+class Solution:
+    def summaryRanges(self, nums:List[int])->List[str]:
+        i,j=0,1
+        start=0
+        list_of_range=[]
+        # Utility Func
+        def chck(a,b):
+            if a==b:
+                list_of_range.append(f"{a}")
+            else:
+                list_of_range.append(f"{a}->{b}")
+        # Iterate over the list using 2 pointers
+        while(j<len(nums)):
+            if nums[j]-nums[i]>1:
+                chck(nums[start], nums[i])
+                start=i
+                i=j
+                j+=1
+            else:
+                j+=1
+                i+=1
+        if j==len(nums):
+            chck(nums[start], nums[i])
+        return list_of_range
+```
+
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
