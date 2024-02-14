@@ -458,6 +458,26 @@ class Solution:
         # Easy way using set
         return set(nums1).intersection(set(nums2))
 ```
+## [350. Intersection of Two Arrays II](https://leetcode.com/problems/intersection-of-two-arrays-ii/description/)
+```python
+# Brute Force Solution
+# Time Complexity : O(n^2)
+# Space Complexity : O(n)
+class Solution:
+    def intersection(selff, nums1:List[int], nums2:List[int])->List[int]:
+        if len(nums1)<=len(nums2):
+            a,b=nums1,nums2
+        else:
+            a,b=nums2,nums1
+        ls=[]
+        # iterate over small one
+        for i in a:
+            if i in b:
+                ls.append(i)
+                b.remove(i)
+        return ls
+```
+
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
