@@ -445,7 +445,19 @@ class NumArray:
 # obj = NumArray(nums)
 # param_1 = obj.sumRange(left,right)
 ```
-
+## [349. Intersection of Two Arrays](https://leetcode.com/problems/intersection-of-two-arrays/description/)
+```python
+"""
+Given two arrays of integers.
+Return an array with intersection of these two arrays
+"""
+# Time Complexity : O(n)
+# Space Complexity : O(n)
+class Solution:
+    def intersection(self, nums1:List[int], nums2:List[int])->List[int]:
+        # Easy way using set
+        return set(nums1).intersection(set(nums2))
+```
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
