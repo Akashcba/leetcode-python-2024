@@ -483,7 +483,7 @@ class Solution:
 # Time Complexity : O(m+n)
 # Space Complexity : O(min(m,n))
 class Solution:
-    def intersection(self, nums1:List[int],nums2:List[int])->List[int]:
+    def intersect(self, nums1:List[int],nums2:List[int])->List[int]:
         # Create hashmap using the smaller array only
         if len(nums1)<=len(nums2):
             a,b=nums1,nums2
@@ -500,8 +500,33 @@ class Solution:
         for i in b:
             if i in hashmap:
                 if hashmap[i]!=0:
-                    ls.apppend(i)
+                    ls.append(i)
                     hashmap[i]-=1
+        return ls
+```
+#### 2nd Optimal prefered if both the arrays are sorted
+```python
+# Similar to merge operation in merge sort
+# Time Complexity : O(mlogm + nlogn) -> Opertaion of sorting
+# Space Complexity : O(k); k is the common intersect part
+class Solution:
+    def intersect(self, nums1:List[int], nums2:List[int])->List[int]:
+        # Sort both the arrays
+        nums1.sort()
+        nums2.sort()
+        # use two pointers to get intersection
+        ls = []
+        i=0
+        j=0
+        while((i<len(nums1)) and (j<len(nums2))):
+            if nums1[i] < nums2[j]:
+                i+=1
+            elif nums1[i] > nums2[j]:
+                j+=1
+            else:
+                ls.append(nums1[i])
+                i+=1
+                j+=1
         return ls
 ```
 # Contributing
