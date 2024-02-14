@@ -529,6 +529,38 @@ class Solution:
                 j+=1
         return ls
 ```
+## [414. Third Maximum Number](https://leetcode.com/problems/third-maximum-number/description/)
+```python
+"""
+Given an array of integers.
+Return the 3rd largest distinct no.
+If 3rd largest not there retrun the largest one 
+"""
+# Time Complexity : O(n)
+# Space Coplexity : O(1)
+import sys
+class Solution:
+    def thirdMax(self, nums:List[int])->int:
+        min_int = -sys.maxsize - 1
+        first=second=third=min_int
+        if len(nums)<=2:
+            return max(nums)
+        for i in nums:
+            if i > first:
+                third=second
+                second=first
+                first=i
+            elif i > second and i!=first:
+                third=second
+                second=i
+            elif i > third and i != second and i!=first:
+                third=i
+        print(third, second, first)
+        if third==min_int:
+            return first
+        return third
+```
+
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
