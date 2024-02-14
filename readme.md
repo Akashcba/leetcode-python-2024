@@ -233,7 +233,177 @@ class  Solution:
                 k-=1
                 j-=1
 ```
-## []()
+<!-- ## [118. Pascal's Triangle](https://leetcode.com/problems/pascals-triangle/description/)
+```python
+"""
+Return first num_rows of pascals triangle
+class Solution:
+    def generate(self,numRows:int)->List[List[int]]:
+        for i in range(0,numRows):
+            if i==0:
+                pascal_tri.append([1])
+            elif i==1:
+                pascal_tri.append([1,1])
+            else:
+                ls = [0]*(i+1)
+                pascal_triangle
+"""
+``` -->
+## [121. Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/)
+```python
+# Time Complexity : O(n)
+# Space Complexity : O(1)
+class Solution:
+    def maxProfit(self,prices:List[int])->int:
+        max_profit=0
+        min_price=prices[0]
+        for i in range(1,len(prices)):
+            # check for any lower value of min price
+            if min_price > prices[i]:
+                min_price=prices[i]
+            # check for maximum of max profit
+            if max_profit < prices[i]-min_price:
+                max_profit=prices[i]-min_price
+        return max_profit
+```
+## [136. Single Number](https://leetcode.com/problems/single-number/description/)
+
+```python
+"""
+Return the single time appearing number in the array
+"""
+class Solution:
+    def singleNumber(self, nums:List[int])->int:
+        # The property of XOR bitwise is that it returns the number which does not
+        # appear even number of times
+        # Check this arrticle for more such tricks
+        # https://medium.com/@shashankmohabia/bitwise-operators-facts-and-hacks-903ca516f28c
+        result=nums[0]
+        for i in range(1,len(nums)):
+            result^=nums[i]
+        return result
+```
+## [217. Contains Duplicate](https://leetcode.com/problems/contains-duplicate/description/)
+```python
+"""
+Given an array of integers.
+Return True if array contains duplicates
+else retrun False
+"""
+# Brute Force
+# Time Complexity O(n^2)
+# Causes Time Limit Exceeded Error
+class Solution:
+    def containsDuplicate(self,nums:List[int])->bool:
+        for i in range(0,len(nums-1)):
+            for j in range(i+1, len(nums)):
+                if nums[i]==nums[j]:
+                    return True
+        return False
+```
+#### Optimal Solution using Hashmap or Set
+```python
+# Time Complexity : O(n)
+# Space Complexity : O(n)
+class Solution:
+    def containsDuplicate(self, nums:List[int])->bool:
+        # hashmap = {}
+        hashmap=set()
+        for i in nums:
+            if i in hashmap:
+                return True
+            else:
+                # hashmap[i]=1
+                hashmap.add(i)
+        return False
+```
+
+## [219. Contains Duplicate II](https://leetcode.com/problems/contains-duplicate-ii/description/)
+```python
+"""
+Given an array of integers and integer k
+check for duplicates in array
+"""
+# Time Complexity O(n^2)
+# Causes  Time Limit Exceeded
+class Solution:
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+        # Using brute force
+        for i in range(0,len(nums)-1):
+            count=0
+            for j in range(i+1,len(nums)):
+                if count==k:
+                    continue
+                count+=1
+                if nums[i]==nums[j]:
+                    return True
+        return False
+```
+#### Optimal Solution
+```python
+# Time Complexity : O(n)
+# SPace Complexity : O(min(n,k))
+class Solution:
+    def containsNearbyDuplicate(self,nums:List[int],k:int)->bool:
+        hashmap={}
+        for i in range(len(nums)):
+            if (nums[i] in hashmap) and (abs(i - hashmap[nums[i]])<=k):
+                return True
+        return False
+```
+## [228. Summary Ranges](https://leetcode.com/problems/summary-ranges/description/)
+```python
+"""
+given a sorted unique integer array
+Return the smallest sorted list of ranges
+that cover all the numbers in the array exactly
+"""
+# Time Complexity : O(n)
+# Space Complexity : O(1)
+class Solution:
+    def summaryRanges(self, nums:List[int])->List[str]:
+        i,j=0,1
+        start=0
+        list_of_range=[]
+        # Utility Func
+        def chck(a,b):
+            if a==b:
+                list_of_range.append(f"{a}")
+            else:
+                list_of_range.append(f"{a}->{b}")
+        # Iterate over the list using 2 pointers
+        while(j<len(nums)):
+            if nums[j]-nums[i]>1:
+                chck(nums[start], nums[i])
+                start=i
+                i=j
+                j+=1
+            else:
+                j+=1
+                i+=1
+        if j==len(nums):
+            chck(nums[start], nums[i])
+        return list_of_range
+```
+## [268. Missing Number](https://leetcode.com/problems/missing-number/description/)
+```python
+"""
+Given an array nums containing n distinct numbers in the range [0, n],
+return the only number in the range that is missing from the array
+"""
+# Time Complexity : O(n)
+# Space Complexity : O(1)
+class Solution:
+    def missingNumber(self, nums:List[int])->int:
+        # Use AP sum
+        n=len(nums)
+        ap_sum = n*(n+1)//2
+        sum=0
+        for i in nums:
+            sum+=i
+        return ap_sum - sum
+```
+
 
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
