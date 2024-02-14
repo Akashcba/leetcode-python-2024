@@ -428,6 +428,23 @@ class Solution:
                 nums[i],nums[j]=nums[j],nums[i]
 ```
 
+## [303. Range Sum Query - Immutable](https://leetcode.com/problems/range-sum-query-immutable/description/)
+```python
+"""
+Given integer give its sum in a specified range (left, right)
+"""
+class NumArray:
+    def __init__(self, nums: List[int]):
+        self.nums=nums
+    def sumRange(self, left: int, right: int) -> int:
+        s=0
+        for i in range(left, right+1):
+            s += self.nums[i]
+        return s
+# Your NumArray object will be instantiated and called as such:
+# obj = NumArray(nums)
+# param_1 = obj.sumRange(left,right)
+```
 
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
