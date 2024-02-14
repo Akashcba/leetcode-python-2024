@@ -477,7 +477,33 @@ class Solution:
                 b.remove(i)
         return ls
 ```
-
+#### Optimal Solution using hashmap
+```python
+# Using Hashmap
+# Time Complexity : O(m+n)
+# Space Complexity : O(min(m,n))
+class Solution:
+    def intersection(self, nums1:List[int],nums2:List[int])->List[int]:
+        # Create hashmap using the smaller array only
+        if len(nums1)<=len(nums2):
+            a,b=nums1,nums2
+        else:
+            a,b=nums2,nums1
+        hashmap, ls={}, []
+        # Iterate the smaller array to create the hashhmap
+        for i in a:
+            if i in hashmap:
+                hashmap[i]+=1
+            else:
+                hashmap[i]=1
+        # Iterate over the larger aarray
+        for i in b:
+            if i in hashmap:
+                if hashmap[i]!=0:
+                    ls.apppend(i)
+                    hashmap[i]-=1
+        return ls
+```
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
