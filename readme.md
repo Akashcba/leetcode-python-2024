@@ -385,7 +385,7 @@ class Solution:
             chck(nums[start], nums[i])
         return list_of_range
 ```
-## []()
+## [268. Missing Number](https://leetcode.com/problems/missing-number/description/)
 
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
