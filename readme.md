@@ -318,6 +318,39 @@ class Solution:
         return False
 ```
 
+## [219. Contains Duplicate II](https://leetcode.com/problems/contains-duplicate-ii/description/)
+```python
+"""
+Given an array of integers and integer k
+check for duplicates in array
+"""
+# Time Complexity O(n^2)
+# Causes  Time Limit Exceeded
+class Solution:
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+        # Using brute force
+        for i in range(0,len(nums)-1):
+            count=0
+            for j in range(i+1,len(nums)):
+                if count==k:
+                    continue
+                count+=1
+                if nums[i]==nums[j]:
+                    return True
+        return False
+```
+#### Optimal Solution
+```python
+# Time Complexity : O(n)
+# SPace Complexity : O(min(n,k))
+class Solution:
+    def containsNearbyDuplicate(self,nums:List[int],k:int)->bool:
+        hashmap={}
+        for i in range(len(nums)):
+            if (nums[i] in hashmap) and (abs(i - hashmap[nums[i]])<=k):
+                return True
+        return False
+```
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
