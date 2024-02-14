@@ -403,6 +403,30 @@ class Solution:
             sum+=i
         return ap_sum - sum
 ```
+## [283. Move Zeroes](https://leetcode.com/problems/move-zeroes/description/)
+```python
+"""
+Given array of integerswith 0's
+Move the 0's t end with changing the order of non 0 elements
+Operations need to be inplace
+"""
+# Optimal Solution using Two Pointers
+# Time Complexity : O(n)
+# Space Complexity : O(1)
+class Solution:
+    def moveZeroes(self, nums:List[int])->None:
+        i,j=0,1
+        while(j<len(nums)):
+            # Check all the use cases manually on papaer and write the rules here
+            if nums[i]!=0:
+                i+=1
+                j+=1
+            elif nums[i]==0 and nums[j]==0:
+                j+=1
+            elif nums[i]==0 and nums[j]!=0:
+                # Swap
+                nums[i],nums[j]=nums[j],nums[i]
+```
 
 
 # Contributing
