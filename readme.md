@@ -604,7 +604,7 @@ class Solution:
                 hashmap[i]=1
         # Check for missing numbers
         ans=[]
-        for i in range(len(nums)):
+        for i in range(1,len(nums)+1):
             if i not in hashmap:
                 ans.append(i)
         return ans
