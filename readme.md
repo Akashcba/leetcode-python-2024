@@ -644,6 +644,36 @@ class Solution:
                 # append i+1 because we need to return in range 1 to n
         return ans
 ```
+## [506. Relative Ranks](https://leetcode.com/problems/relative-ranks/description/)
+```python
+"""
+Store the original indices of the numbers in the input
+Then sort the input array
+Put the value at the original index the index itcomes after sorting
+that is its rank
+"""
+class Solution:
+    def findRelativeRanks(self, score:List[int])->List[str]:
+        hashmap={}
+        # hashmap to store original indices
+        for i in range(len(score)):
+            hashmap[score[i]]=i
+        # Sort the input array
+        score=sorted(score, reverse=True)
+        # Ans array
+        ranks=['Gold Medal','Silver Medal','Bronze Medal']
+        ans=['']*len(score)
+        for i in range(len(score)):
+            # Score array is already sorted
+            # so i<3 in score now representts top 3 ranks
+            if i<3:
+                # store ranks at the original index only
+                ans[hashmap[score[i]]]=ranks[i]
+            else:
+                ans[hashmap[score[i]]]=str(i+1)
+        return ans
+```
+
 
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
