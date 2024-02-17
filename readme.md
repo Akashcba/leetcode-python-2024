@@ -609,6 +609,41 @@ class Solution:
                 ans.append(i)
         return ans
 ```
+#### Optimal solution without using extra space of hashmap
+```python
+# Space complexity is O(1) if we do not consider the space of ans array
+class Solution:
+    def findDisappearedNumbers(self, nums:List[int])->List[int]:
+        # Instead of Hashmap let's use the counter array logic
+        # as there in the count sort algorithm
+        ans=[0]*(len(nums)+1)
+        for i in nums:
+            ans[i]+=1
+        for i in range(1,len(nums)+1):
+            if ans[i]==0:
+                ans[i]=i
+            else:
+                ans[i]=0
+        return [i for i in ans if i!=0]
+```
+#### Another optimal solution is using inplace operations in the input array
+```python
+class Solution:
+    def findDisappearedNumbers(self, nums:List[int])->List[int]:
+        # Assing -1 value to elements in nums
+        for i in range(len(nums)):
+            # len(nums) == n
+            # so nums[i] will be in index only
+            nums[abs(nums[i])-1]=abs(nums[abs(nums[i])-1])*-1
+            # abs is used because values will already be -ve if there is duplicate of any digit
+        ans=[]
+        for i in range(len(nums)):
+            if nums[i]>0:
+                # which is only possible if that number does not exist in i
+                ans.append(i+1)
+                # append i+1 because we need to return in range 1 to n
+        return ans
+```
 
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
