@@ -673,7 +673,22 @@ class Solution:
                 ans[hashmap[score[i]]]=str(i+1)
         return ans
 ```
-
+## [455. Assign Cookies](https://leetcode.com/problems/assign-cookies/description/)
+```python
+class Solution:
+    def findContentChildren(self, g:List[int], s:List[int])->int:
+        # Sort the 2 arrays and then use 2 pointers
+        g.sort()
+        s.sort()
+        i=j=0
+        count=0
+        while(i<len(g) and j<len(s)):
+            if s[j]>=g[i]:
+                count+=1
+                i+=1
+            j+=1
+        return count
+```
 
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
