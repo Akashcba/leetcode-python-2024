@@ -560,6 +560,34 @@ class Solution:
             return first
         return third
 ```
+## [2149. Rearrange Array Elements by Sign](https://leetcode.com/problems/rearrange-array-elements-by-sign/description/?envType=daily-question&envId=2024-02-14)
+```python
+"""
+Even length array with equal no. of positive and negative no.s
+rearrange the elements in the array
+"""
+class Solution:
+    def rearrangeArray(self, nums:List[int])->List[int]:
+        # Time Compleity : O(N)
+        # Space Complexity : O(1)
+        pos=0
+        neg=1
+        ans=[0]*len(nums)
+        for i in nums:
+            if i>0:
+                ans[pos]=i
+                pos+=2
+            else:
+                ans[neg]=i
+                neg+=2
+        return ans
+```
+
+## []()
+```python
+
+
+```
 
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
