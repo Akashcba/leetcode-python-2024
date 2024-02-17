@@ -690,6 +690,25 @@ class Solution:
         return count
 ```
 
+## [485. Max Consecutive Ones](https://leetcode.com/problems/max-consecutive-ones/)
+```python
+"""
+count the maximum number of 1's in the input array
+"""
+class Solution:
+    def findMaxConsecutiveOnes(self, nums: List[int]) -> int:
+        count=0
+        mxcnt = 0
+        for i in nums:
+            if i==1:
+                count+=1
+            if count>mxcnt:
+                mxcnt=count
+            elif i!=1:
+                count=0
+        return mxcnt
+```
+
 # Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
