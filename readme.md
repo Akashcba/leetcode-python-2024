@@ -583,10 +583,31 @@ class Solution:
         return ans
 ```
 
-## []()
+## [448. Find All Numbers Disappeared in an Array](https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/description/)
 ```python
-
-
+"""
+Given an array of integers of length n.
+Return an array containing no.s that are not in array in range [1,n].
+Input array is not sorted and contains duplicates.
+"""
+# Using Hashmap
+# Time complexity : O(N)
+# Space complexity : O(N)
+# This is not the optimal solution
+class Solution:
+    def findDisappearedNumbers(self, nums:List[int])->List[int]:
+        hashmap={}
+        for i in nums:
+            if i in  hashmap:
+                continue
+            else:
+                hashmap[i]=1
+        # Check for missing numbers
+        ans=[]
+        for i in range(len(nums)):
+            if i not in hashmap:
+                ans.append(i)
+        return ans
 ```
 
 # Contributing
