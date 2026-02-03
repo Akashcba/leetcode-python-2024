@@ -1,7 +1,7 @@
-# Leetcode-Python-2024
+# Leetcode-Python-2026
 Solution for All Leetcode DSA practice questions for 2024.
 
-Zero to Hero in Leetcode DSA in 2024.
+Zero to Hero in Leetcode DSA in 2026.
 
 ## [169. Majority Element](https://leetcode.com/problems/majority-element/description/?envType=daily-question&envId=2024-02-12)
 ```python
